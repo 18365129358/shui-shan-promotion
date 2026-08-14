@@ -43,4 +43,24 @@ function render(){
 }
 document.querySelector('#remainDays').addEventListener('input',render);render();
 </script>
+<script>
+function injectCompletionRatio(){
+  const head=document.querySelector('#tracker thead tr');
+  if(!document.querySelector('#completion-ratio-head')){
+    const th=document.createElement('th'); th.id='completion-ratio-head'; th.textContent='\u76ee\u524d\u5b8c\u6210\u9500\u552e\u989d\u5360\u6bd4'; head.insertBefore(th,head.children[5]);
+  }
+  const rows=document.querySelectorAll('#tracker tbody tr');
+  rows.forEach((tr,i)=>{
+    if(tr.classList.contains('total')){
+      if(!tr.querySelector('.completion-ratio')){const td=document.createElement('td');td.className='completion-ratio';td.textContent=pct(initial.reduce((s,r)=>s+r[4],0)/initial.reduce((s,r)=>s+r[1],0));tr.insertBefore(td,tr.children[5]);}
+    } else {
+      const td=tr.querySelector('.completion-ratio'); if(td) td.remove();
+      const c=document.createElement('td'); c.className='formula completion-ratio'; c.textContent=pct(initial[i][4]/initial[i][1]); tr.insertBefore(c,tr.children[5]);
+    }
+  });
+}
+injectCompletionRatio();
+document.querySelector('#tracker tbody').addEventListener('change',()=>setTimeout(injectCompletionRatio,0));
+document.querySelector('#remainDays').addEventListener('input',()=>setTimeout(injectCompletionRatio,0));
+</script>
 </body></html>
