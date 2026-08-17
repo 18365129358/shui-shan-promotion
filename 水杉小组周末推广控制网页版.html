@@ -13,9 +13,9 @@ tbody tr:nth-child(even):not(.total) td:nth-child(n+5){background:#eee8ff!import
 <main>
   <section class="hero"><h1>水杉小组店铺推广花费</h1><p>截图数据更新页 · 公式列自动计算</p></section>
   <section class="toolbar">
-    <div class="field"><label for="cutoff">截止日期</label><input id="cutoff" type="text" value="2026.8.13"></div>
+    <div class="field"><label for="cutoff">截止日期</label><input id="cutoff" type="text" value="2026.8.16"></div>
     <div class="field"><label for="monthDays">当月天数</label><input id="monthDays" type="number" value="31" min="1"></div>
-    <div class="field"><label for="remainDays">剩余天数</label><input id="remainDays" type="number" value="18" min="0"></div>
+    <div class="field"><label for="remainDays">剩余天数</label><input id="remainDays" type="number" value="15" min="0"></div>
     <div class="hint">黄色：每日截图后更新　绿色：公式自动计算</div>
   </section>
   <div class="table-wrap"><table id="tracker"><thead><tr>
@@ -24,9 +24,7 @@ tbody tr:nth-child(even):not(.total) td:nth-child(n+5){background:#eee8ff!import
   <div class="foot">公式：目前推广花费 = 目前完成销售额 × 目前推广花费占比；剩余推广花费 = 月度目标推广花费 − 目前推广花费；剩余日均推广花费 = 剩余推广花费 ÷ 剩余天数。</div>
 </main>
 <script>
-const initial=[
- ['水杉',3450000,.092,317400,1399780.41,.0966],['百朗',550000,.17,93500,219696.34,.1999],['玉杉',10000,.35,3500,2833.76,.0998],['蓝杉',450000,.17,76500,143229.11,.22],['好拓',30000,.35,10500,7996.35,.4036],['星杉',480000,.17,81600,167536.85,.2019],['贝想家',25000,.35,8750,7780.55,.3298],['金玉',350000,.17,59500,109152.03,.2328],['绿色',350000,.17,59500,154754.06,.1947],['杉宁',90000,.35,31500,29434.78,.3816]
-];
+const initial=[['水杉',3450000,.092,317400,1640096.85,.0998],['百朗',550000,.17,93500,256444.67,.2022],['玉杉',10000,.35,3500,3108.45,.1368],['蓝杉',450000,.17,76500,167349.87,.2284],['好拓',30000,.35,10500,9497.7,.4125],['星杉',480000,.17,81600,202968.15,.1887],['贝想家',25000,.35,8750,8584.89,.3243],['金玉',350000,.17,59500,130062.95,.2301],['绿色',350000,.17,59500,184830.7,.2008],['杉宁',90000,.35,31500,34409.66,.3674]];
 const tbody=document.querySelector('#tracker tbody'), money=n=>Number(n||0).toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2}), pct=n=>(Number(n||0)*100).toFixed(2)+'%';
 function input(value,row,key,cls=''){return `<input class="cell-input ${cls}" data-row="${row}" data-key="${key}" value="${value}" inputmode="decimal">`}
 function render(){
